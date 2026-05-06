@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <link rel="stylesheet" href="admin.css">
+
+  
+</head>
+
+<body onload="loadAdmin()">
+
+<header>
+  <h1 class="admin-title">Admin Panel</h1>
+</header>
+
+<div class="container">
+
+  <!-- USERS -->
+  <div class="box">
+    <h2>Users</h2>
+    <div id="usersList"></div>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="box">
+    <h2>Events</h2>
+    <div id="eventsList"></div>
+
+    <hr>
+<button onclick="toggleAddEvent()" class="add-btn"> Add Event</button>
+
+<div id="addEventForm" class="admin-form">
+
+  <div class="field">
+    <label>Title</label>
+    <input id="title" placeholder="Event title">
+  </div>
+
+  <div class="field">
+    <label>Location</label>
+    <input id="location" placeholder="Location">
+  </div>
+
+  <div class="field">
+    <label>Date</label>
+    <input id="date" type="date">
+  </div>
+
+  <div class="field">
+    <label>Description</label>
+    <textarea id="description" placeholder="Description"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Genre</label>
+    <input id="genre" placeholder="Genre">
+  </div>
+
+  <div class="field">
+    <label>Image URL</label>
+    <input id="image" placeholder="https://...">
+  </div>
+
+  <button onclick="addEvent()" class="save-btn">Save Event</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<script src="app.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

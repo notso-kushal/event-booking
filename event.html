@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <div class="container">
+<button onclick="window.location.href='dashboard.html'"
+  style="
+    margin-bottom: 20px;
+    padding: 10px 16px;
+    border: 1px solid #cbd5e1;
+    background: transparent;
+    color: #0f172a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s ease;
+    font-weight: 600;
+  "
+  onmouseover="this.style.transform='scale(1.05)'"
+  onmouseout="this.style.transform='scale(1)'"
+>
+  ← Back to Dashboard
+</button>
+
+
+        <div id="eventBox">
+            <p>Loading event details...</p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script src="app.js"></script>
+    <script>
+        // Trigger the fetch when the page loads
+        window.onload = loadEventDetails;
+    </script>
+</body>
+</html>

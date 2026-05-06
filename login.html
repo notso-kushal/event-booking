@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="auth-body">
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <!-- ================= LOGIN ================= -->
+      <div class="auth-front">
+
+        <h2>Welcome Back 👋</h2>
+        <p class="subtitle">Login to continue</p>
+
+        <input id="email" type="email" placeholder="Email">
+
+        <div class="password-wrapper">
+          <input id="password" type="password" placeholder="Password">
+          <span class="toggle-eye" onclick="togglePassword(this, 'password')">👁</span>
+        </div>
+
+        <button onclick="login()">Login</button>
+
+        <p id="loginMsg"></p>
+
+        <p style="margin-top:15px; font-size:14px;">
+          New here?
+          <span onclick="flipCard()" style="color:blue;cursor:pointer;">Register</span>
+        </p>
+
+      </div>
+
+      <!-- ================= REGISTER ================= -->
+      <div class="auth-back" style="display:none;">
+
+        <h2>Create Account ✨</h2>
+        <p class="subtitle">Sign up to get started</p>
+
+        <input id="regName" type="text" placeholder="Name">
+        <input id="regEmail" type="email" placeholder="Email">
+
+        <div class="password-wrapper">
+          <input id="regPassword" type="password" placeholder="Password">
+          <span class="toggle-eye" onclick="togglePassword(this, 'regPassword')">👁</span>
+        </div>
+
+        <button onclick="register()">Register</button>
+
+        <p id="registerMsg"></p>
+
+        <p style="margin-top:15px; font-size:14px;">
+          Already have account?
+          <span onclick="flipCard()" style="color:blue;cursor:pointer;">Login</span>
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= FIREBASE ================= -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script>
+    // Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCXAT8_6QJFdjsIGP70FA3oIArAVYErQNI",
+      authDomain: "ukeventbooking.firebaseapp.com",
+      projectId: "ukeventbooking",
+      storageBucket: "ukeventbooking.firebasestorage.app",
+      messagingSenderId: "207448958646",
+      appId: "1:207448958646:web:b35511189b5d37bfed6817"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+
+    
+    /* ================= LOGIN ================= */
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const msg = document.getElementById("loginMsg");
+
+      if (!email || !password) {
+        msg.style.color = "red";
+        msg.textContent = "Please fill all fields";
+        return;
+      }
+
+ auth.signInWithEmailAndPassword(email, password)
+.then(async (userCredential) => {
+
+  const user = userCredential.user;
+
+  // 🔥 ADMIN CHECK (ONLY EMAIL)
+  if (user.email === "admin@gmail.com") {
+    window.location.href = "admin.html";
+    return;
+  }
+
+  // normal users
+  window.location.href = "dashboard.html";
+
+})
+.catch(error => {
+  alert(error.message);
+});
+    }
+
+
+function register() {
+  const name = document.getElementById("regName").value;
+  const email = document.getElementById("regEmail").value;
+  const password = document.getElementById("regPassword").value;
+  const msg = document.getElementById("registerMsg");
+
+  if (!name || !email || !password) {
+    msg.style.color = "red";
+    msg.innerText = "Please fill all fields";
+    return;
+  }
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      const user = userCredential.user;
+
+      return db.collection("users").doc(user.uid).set({
+        name: name,
+        email: email,
+        uid: user.uid
+      });
+    })
+    .then(() => {
+      msg.style.color = "green";
+      msg.innerText = "Registered successfully ✔";
+
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 600);
+    })
+    .catch(error => {
+      console.error(error); // IMPORTANT
+      msg.style.color = "red";
+      msg.innerText = error.message;
+    });
+}
+    /* ================= FLIP ================= */
+    let isLogin = true;
+
+    function flipCard() {
+      const front = document.querySelector(".auth-front");
+      const back = document.querySelector(".auth-back");
+
+      if (isLogin) {
+        front.style.display = "none";
+        back.style.display = "block";
+      } else {
+        front.style.display = "block";
+        back.style.display = "none";
+      }
+
+      isLogin = !isLogin;
+    }
+
+    /* ================= PASSWORD TOGGLE ================= */
+    function togglePassword(el, id) {
+      const input = document.getElementById(id);
+
+      if (input.type === "password") {
+        input.type = "text";
+        el.textContent = "🙈";
+      } else {
+        input.type = "password";
+        el.textContent = "👁";
+      }
+    }
+  </script>
+
+</body>
+</html>

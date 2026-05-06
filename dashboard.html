@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- DASHBOARD WRAPPER -->
+<div id="dashboardPage">
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-logo" onclick="goDashboard()">
+      <span class="logo-icon">🚀</span>
+      <h2>UCB<span>Events</span></h2>
+    </div>
+
+    <div class="nav-actions">
+      <div class="profile-section">
+        <button class="profile-trigger" onclick="toggleProfile()">
+          <div class="avatar-circle">
+            <span id="navInitials">U</span>
+          </div>
+          <span id="navUserName">Account</span>
+        </button>
+
+        <div id="profileDropdown" class="dropdown-card">
+          <div class="dropdown-user-info">
+            <div class="dropdown-avatar" id="dropdownInitials">U</div>
+            <div class="user-meta">
+              <strong id="profileName">Loading Name...</strong>
+              <span id="profileEmail">email@example.com</span>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+
+          <div class="dropdown-links">
+            <button onclick="goToBookings()">
+              <span class="icon">📅</span> 
+              <div class="link-text">
+                <strong>My Bookings</strong>
+                <p>View and manage your tickets</p>
+              </div>
+            </button>
+
+            <button onclick="goDashboard(); return false;">
+              <span class="icon">🔍</span> 
+              <div class="link-text">
+                <strong>Discover Events</strong>
+                <p>Find new things to do</p>
+              </div>
+            </button>
+          </div>
+
+          <div class="dropdown-divider"></div>
+
+          <button class="logout-row" onclick="logout()">
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="home-hero">
+  <span class="hero-badge">✨ Discover Your Next Adventure</span>
+  <h1 class="hero-slogan">Every Event is a <span class="highlight">New Story</span></h1>
+  <p class="hero-subtext">
+    Find the most exciting concerts, workshops, and meetups in the UK.
+  </p>
+
+  <button class="hero-btn" onclick="document.getElementById('eventsList').scrollIntoView({ behavior: 'smooth' })">
+    Explore Events →
+  </button>
+
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span>UCB Events • </span>
+      <span>UCB Events • </span>
+      <span>UCB Events • </span>
+      <span>UCB Events • </span>
+    </div>
+  </div>
+</div>
+
+<!-- EVENTS SECTION -->
+<div id="events-section-target">
+  <div class="dashboard-header">
+    <h2>Events</h2>
+    <h3>Don't miss out on the fun and memories</h3>
+  </div>
+
+  <div class="filter-bar">
+    <label>Filter Events:</label>
+
+    <select id="eventFilter" onchange="loadEvents()">
+      <option value="all">All Events</option>
+      <option value="music">Music</option>
+      <option value="sports">Sports</option>
+      <option value="tech">Tech</option>
+      <option value="education">Education</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div id="eventsList"></div>
+</div>
+
+<!-- UPCOMING EVENTS -->
+<div id="upcoming-section">
+  <div class="dashboard-header">
+    <h2>Upcoming Events</h2>
+    <h3>Don’t miss what’s coming next</h3>
+  </div>
+
+  <div id="upcomingEventsList"></div>
+</div>
+
+</div>
+<!-- END DASHBOARD -->
+
+<!-- BOOKINGS PAGE (SEPARATE FROM DASHBOARD) -->
+<div id="bookingsPage" style="display:none;"></div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<script src="app.js"></script>
+
+<script>
+  loadDashboard();
+</script>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+  <div class="footer-content">
+
+    <h3>Contact Us</h3>
+
+    <p>Email: munich772@gmail.com</p>
+    <p>Phone: +44 4500 132 957</p>
+    <p>Location: Birmingham, UK</p>
+
+    <div class="footer-bottom">
+      <p>© 2026 UK Event Booking. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+<div id="loadingScreen">
+  <div class="pulse-loader"></div>
+  <p>Loading your dashboard...</p>
+</div>
+</html>
