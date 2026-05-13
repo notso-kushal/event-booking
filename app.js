@@ -363,8 +363,8 @@ function loadEventDetails() {
             <h3>Select Your Seat</h3>
             <select id="seatType" class="booking-input">
               <option value="General Admission">General Admission</option>
-              <option value="VIP Section">VIP Section (+£20)</option>
-              <option value="Front Row">Front Row (+£10)</option>
+              <option value="VIP Section">VIP Section</option>
+              <option value="Front Row">Front Row</option>
             </select>
             
             <button class="confirm-btn" onclick="bookEvent('${eventId}')">
