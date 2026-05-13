@@ -10,7 +10,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
 <script>
-  // Firebase config
+
   const firebaseConfig = {
     apiKey: "AIzaSyCXAT8_6QJFdjsIGP70FA3oIArAVYErQNI",
     authDomain: "ukeventbooking.firebaseapp.com",
@@ -23,13 +23,13 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-  // 🔥 SMART REDIRECT LOGIC
+
   auth.onAuthStateChanged((user) => {
     if (user) {
-      // logged in user → real dashboard
+
       window.location.href = "dashboard.html";
     } else {
-      // guest user → same dashboard but guest mode
+
       window.location.href = "dashboard.html";
     }
   });

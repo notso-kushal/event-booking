@@ -18,15 +18,6 @@ const db = firebase.firestore();
 
 
 
-
-
-// ==========================
-// ✅ DASHBOARD
-// ==========================
-// ==========================
-// ✅ DASHBOARD (FIXED)
-// ==========================
-
 function loadDashboard() {
   loadEvents();
   loadUpcomingEvents();
@@ -47,7 +38,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
 
     const uid = user.uid;
 
-    // 🔥 GET USER DATA FROM FIRESTORE
+
     const doc = await firebase.firestore().collection("users").doc(uid).get();
 
     const data = doc.exists ? doc.data() : {};
@@ -57,11 +48,10 @@ firebase.auth().onAuthStateChanged(async (user) => {
 
     const initials = name.charAt(0).toUpperCase();
 
-    // NAV BAR
     navName.textContent = name;
     navInitials.textContent = initials;
 
-    // DROPDOWN HTML
+
     dropdown.innerHTML = `
       <div class="dropdown-user-info">
         <div class="dropdown-avatar">${initials}</div>
@@ -99,7 +89,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
     `;
 
   } else {
-    // 👤 GUEST
+
     navName.textContent = "Guest";
     navInitials.textContent = "G";
 
@@ -121,9 +111,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
     }, 600); 
 }
 
-// ==========================
-// ✅ LOAD BOOKINGS (FIXED)
-// ==========================
+
 async function loadBookings() {
 
   const user = auth.currentUser;
@@ -251,9 +239,6 @@ function applyGuestUI() {
 }
 
 
-// ==========================
-// ✅ LOAD EVENTS
-// ==========================
 function loadEvents() {
   const container = document.getElementById("eventsList");
   const filter = document.getElementById("eventFilter")?.value || "all";
@@ -279,7 +264,7 @@ function loadEvents() {
         const genreRaw = (e.genre || e.Genre || "other");
 const genre = genreRaw.charAt(0).toUpperCase() + genreRaw.slice(1).toLowerCase();
 
-        // 🔥 FILTER LOGIC
+       
         if (filter !== "all" && genre !== filter) return;
 
         const title = e.title || e.Title || "Untitled";
@@ -312,9 +297,6 @@ const genre = genreRaw.charAt(0).toUpperCase() + genreRaw.slice(1).toLowerCase()
 }
 
 
-// ==========================
-// ✅ ADD EVENT
-// ==========================
 function addEvent() {
   const title = document.getElementById("title").value;
   const location = document.getElementById("location").value;
@@ -342,9 +324,7 @@ function addEvent() {
 }
 
 
-// ==========================
-// ✅ EVENT PAGE
-// ==========================
+
 function openEvent(eventId, source = "events") {
   localStorage.setItem("selectedEvent", eventId);
   localStorage.setItem("eventSource", source); // 👈 NEW
@@ -425,9 +405,7 @@ function loadEventDetails() {
     });
 }
 
-// ==========================
-// ✅ LOAD UPCOMING EVENTS
-// ==========================
+
 function loadUpcomingEvents() {
   const container = document.getElementById("upcomingEventsList");
 
@@ -491,9 +469,6 @@ function loadUpcomingEvents() {
 }
 
 
-// ==========================
-// ✅ BOOK EVENT
-// ==========================
 function bookEvent(eventId, eventType = "normal") {
 
   const user = firebase.auth().currentUser;
@@ -511,8 +486,8 @@ function bookEvent(eventId, eventType = "normal") {
     eventId: eventId,
     seatType: seatType,
 
-    // ⭐ IMPORTANT PART
-    type: eventType, // "upcoming" or "normal"
+
+    type: eventType,
 
     status: "active",
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -529,9 +504,7 @@ function bookEvent(eventId, eventType = "normal") {
 
 
 
-// ==========================
-// ✅ PROFILE DROPDOWN
-// ==========================
+
 function toggleProfile() {
   const box = document.getElementById("profileDropdown");
   box.style.display = box.style.display === "block" ? "none" : "block";
@@ -540,7 +513,7 @@ function toggleProfile() {
 function goToBookings() {
   document.getElementById("profileDropdown").style.display = "none";
 
-  // ✅ HIDE ONLY THESE (keep your HTML unchanged)
+
   const hero = document.querySelector(".home-hero");
   const events = document.getElementById("events-section-target");
   const upcoming = document.getElementById("upcoming-section");
@@ -549,7 +522,7 @@ function goToBookings() {
   if (events) events.style.display = "none";
   if (upcoming) upcoming.style.display = "none";
 
-  // SHOW BOOKINGS
+
   const bookingsPage = document.getElementById("bookingsPage");
   bookingsPage.style.display = "block";
 
@@ -565,9 +538,7 @@ function goToBookings() {
   loadBookings();
 }
 
-// ==========================
-// ✅ HOME PAGE
-// ==========================
+
 function loadHome() {
   db.collection("events").limit(3).get()
     .then(snapshot => {
@@ -681,9 +652,7 @@ function startCarousel() {
   }, 3000);
 }
 
-// ==========================
-// ✅ LOGOUT
-// ==========================
+
 function logout() {
   auth.signOut().then(() => {
     localStorage.clear();
@@ -697,7 +666,7 @@ function cancelBooking(id) {
     db.collection("bookings").doc(id).update({ status: "cancelled" })
       .then(() => {
         alert("Cancelled!");
-        loadBookings(); // Refresh the view
+        loadBookings(); 
       });
   }
 }

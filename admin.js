@@ -1,12 +1,4 @@
-// ==========================
-// 🔥 ADMIN PANEL JS
-// ==========================
 
-// 🚨 Make sure firebase is already initialized in app.js
-
-// ==========================
-// 🔐 ADMIN PROTECTION
-// ==========================
 firebase.auth().onAuthStateChanged(async (user) => {
   if (!user) {
     window.location.href = "login.html";
@@ -24,9 +16,6 @@ firebase.auth().onAuthStateChanged(async (user) => {
 });
 
 
-// ==========================
-// 👤 LOAD USERS
-// ==========================
 function loadUsers() {
   const container = document.getElementById("usersList");
 
@@ -55,9 +44,7 @@ function loadUsers() {
 }
 
 
-// ==========================
-// ❌ DELETE USER (Firestore only)
-// ==========================
+
 function deleteUser(userId) {
   if (!confirm("Are you sure you want to delete this user?")) return;
 
@@ -73,9 +60,7 @@ function deleteUser(userId) {
 }
 
 
-// ==========================
-// 🎟️ LOAD EVENTS
-// ==========================
+
 function loadEvents() {
   const container = document.getElementById("eventsList");
 
@@ -109,9 +94,7 @@ function loadEvents() {
 }
 
 
-// ==========================
-// ❌ DELETE EVENT
-// ==========================
+
 function deleteEvent(eventId) {
   if (!confirm("Delete this event?")) return;
 
@@ -127,9 +110,7 @@ function deleteEvent(eventId) {
 }
 
 
-// ==========================
-// ➕ ADD EVENT
-// ==========================
+
 function addEvent() {
   const title = document.getElementById("title").value;
   const location = document.getElementById("location").value;

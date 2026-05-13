@@ -1,6 +1,4 @@
-/* =========================
-   RESET & THEME
-========================= */
+
 :root {
   --primary: #4f46e5;
   --primary-hover: #4338ca;
@@ -12,7 +10,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Matches the offset in the JS */
+  scroll-padding-top: 80px; 
   height: 100%;
 }
 
@@ -43,7 +41,7 @@ body {
   z-index: 9999;
 }
 
-/* 🔥 PULSE DOT */
+
 .pulse-loader {
   width: 18px;
   height: 18px;
@@ -68,11 +66,8 @@ body {
     opacity: 1;
   }
 }
-/* AUTH PAGE */
 
-/* =========================
-   AUTH BACKGROUND
-========================= */
+
 .auth-body {
   margin: 0;
   height: 100vh;
@@ -84,16 +79,14 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* center wrapper */
+
 .auth-wrapper {
   width: 100%;
   max-width: 420px;
   padding: 20px;
 }
 
-/* =========================
-   CARD DESIGN
-========================= */
+
 .auth-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
@@ -126,9 +119,7 @@ body {
   margin-bottom: 25px;
 }
 
-/* =========================
-   INPUTS
-========================= */
+
 .auth-card input {
   width: 100%;
   padding: 14px;
@@ -152,9 +143,7 @@ body {
 
 
 
-/* =========================
-   BUTTON
-========================= */
+
 .auth-card button {
   width: 100%;
   padding: 14px;
@@ -197,7 +186,7 @@ body {
 
 .auth-card input {
   width: 100%;
-  box-sizing: border-box; /* 🔥 IMPORTANT FIX */
+  box-sizing: border-box; 
   padding: 14px;
   margin-bottom: 15px;
 
@@ -208,7 +197,7 @@ body {
   outline: none;
 }
 
-/* PASSWORD WRAPPER FIX */
+
 .password-wrapper {
   position: relative;
   width: 100%;
@@ -216,12 +205,12 @@ body {
   margin-bottom: 15px;
 }
 
-/* PASSWORD INPUT INSIDE WRAPPER */
+
 .password-wrapper input {
   width: 100%;
   box-sizing: border-box;
   padding: 14px;
-  padding-right: 45px; /* space for eye icon */
+  padding-right: 45px; 
   border-radius: 12px;
   border: 1px solid #e2e8f0;
   font-size: 0.95rem;
@@ -315,16 +304,13 @@ body {
 }
 
 
-/* =========================
-   AUTO-FLOWING TEXT (MARQUEE)
-========================= */
-/* Add this to your CSS */
+
 .container {
   max-width: 1100px;
   margin: 40px auto;
   padding: 0 20px;
-  min-height: 120vh; /* This ensures the page is always long enough to scroll */
-  padding-bottom: 100px; /* Extra space at the very bottom of the website */
+  min-height: 120vh; 
+  padding-bottom: 100px; 
 }
 
 
@@ -332,11 +318,11 @@ body {
 .marquee-container {
   margin-top: 40px;  
   margin-bottom: 30px; 
-  overflow: hidden; /* Hides the text that goes off-screen */
+  overflow: hidden; 
   width: 100%;
   white-space: nowrap;
   position: relative;
-  background: rgba(79, 70, 229, 0.03); /* Very subtle tint */
+  background: rgba(79, 70, 229, 0.03); 
   padding: 15px 0;
   border-top: 1px solid rgba(79, 70, 229, 0.1);
   border-bottom: 1px solid rgba(79, 70, 229, 0.1);
@@ -344,7 +330,7 @@ body {
 
 .marquee-content {
   display: inline-block;
-  padding-left: 100%; /* Start the text off-screen to the right */
+  padding-left: 100%;
   animation: marquee-flow 20s linear infinite;
 }
 
@@ -354,11 +340,11 @@ body {
   color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding-right: 50px; /* Space between the repeating phrases */
+  padding-right: 50px; 
   opacity: 0.6;
 }
 
-/* THE ANIMATION */
+
 @keyframes marquee-flow {
   0% {
     transform: translate(0, 0);
@@ -371,21 +357,19 @@ body {
 
 
 
-/* =========================
-   NAVBAR
-========================= */
+
 
 nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(17, 24, 39, 0.9); /* Dark background with transparency */
-  backdrop-filter: blur(12px); /* Glass blur effect */
+  background: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   height: 75px;
   display: flex;
-  /* align-items: center; */
+
 }
 
 .nav-container {
@@ -397,7 +381,7 @@ padding: 40px;
 
 }
 
-/* Logo Styling */
+
 .nav-logo {
   display: flex;
   align-items: center;
@@ -413,10 +397,10 @@ padding: 40px;
 }
 
 .nav-logo h2 span {
-  color: var(--primary); /* The indigo color */
+  color: var(--primary); 
 }
 
-/* Profile Section & Buttons */
+
 .nav-actions {
 margin-left: auto;
 
@@ -441,7 +425,7 @@ margin-left: auto;
   gap: 12px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 5px 15px 5px 5px; /* Less padding on left to hug the circle */
+  padding: 5px 15px 5px 5px; 
   border-radius: 99px;
   color: white;
   cursor: pointer;
@@ -456,7 +440,7 @@ margin-left: auto;
 .avatar-circle {
   width: 35px;
   height: 35px;
-  background: var(--primary); /* Indigo color */
+  background: var(--primary);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -468,12 +452,9 @@ margin-left: auto;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Improved Dropdown */
-/* =========================
-   PREMIUM PROFILE DROPDOWN
-========================= */
+
 #profileDropdown {
-  display: none; /* Controlled by JS */
+  display: none;
   position: absolute;
   right: 0;
   top: 65px;
@@ -492,7 +473,7 @@ margin-left: auto;
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* User Header Section */
+
 .dropdown-user-info {
   display: flex;
   align-items: center;
@@ -505,7 +486,7 @@ margin-left: auto;
   height: 45px;
   background: var(--primary);
   color: white;
-  border-radius: 12px; /* Squirrel shape */
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -528,19 +509,18 @@ margin-left: auto;
   color: #64748b;
 }
 
-/* Dividers */
+
 .dropdown-divider {
   height: 1px;
   background: #f1f5f9;
   margin: 8px 0;
 }
 
-/* Navigation Links */
-/* Fix for the overlapping dropdown items */
+
 .dropdown-links {
   display: flex;
-  flex-direction: column; /* This stacks them vertically */
-  gap: 4px; /* Small space between buttons */
+  flex-direction: column;
+  gap: 4px;
   width: 100%;
 }
 
@@ -555,14 +535,14 @@ margin-left: auto;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
-  text-align: left; /* Ensures text stays left-aligned */
+  text-align: left;
 }
 
 .dropdown-links button:hover {
   background: #f8fafc;
 }
 
-/* Ensure the link text container doesn't shrink */
+
 .link-text {
   display: flex;
   flex-direction: column;
@@ -579,11 +559,11 @@ margin-left: auto;
   margin: 0;
   font-size: 0.75rem;
   color: #64748b;
-  white-space: nowrap; /* Prevents text from wrapping awkwardly */
+  white-space: nowrap; 
 }
 
 
-/* Logout Row */
+
 .logout-row {
   width: 100%;
   padding: 12px;
@@ -602,9 +582,8 @@ margin-left: auto;
 .logout-row:hover {
   background: #fef2f2;
 }
-/* =========================
-   DASHBOARD LAYOUT
-========================= */
+
+
 .container {
   max-width: 1100px;
   margin: 40px auto;
@@ -613,26 +592,26 @@ margin-left: auto;
 
 .dashboard-header {
   width: 100%;
-  text-align: center; /* This centers all text inside */
-  margin: 50px 0 30px 0;    /* Adds space above and below the heading */
+  text-align: center;
+  margin: 50px 0 30px 0; 
 }
 
 .dashboard-header h2 {
   font-size: 2.5rem;
   font-weight: 800;
   color: #111827;
-  margin: 0;         /* Removes default browser margins */
+  margin: 0;        
 }
 
 .dashboard-header h3 {
   font-size: 1.1rem;
   color: #64748b;
   font-weight: 400;
-  margin: 10px auto 0 auto; /* Centers the block itself */
-    /* Keeps the text from being too wide */
+  margin: 10px auto 0 auto; 
+
 }
 
-/* Section Separation for Bookings */
+
 .event-section {
   margin-bottom: 50px;
 }
@@ -646,9 +625,7 @@ margin-left: auto;
   border-bottom: 2px solid #e2e8f0;
 }
 
-/* =========================
-   DISCOVER EVENT GRID
-========================= */
+
 #eventsList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -705,10 +682,7 @@ margin-left: auto;
   cursor: pointer;
 }
 
-/* =========================
-   PRETTY BOOKING CARDS (My Bookings)
-========================= */
-/* Row for status + action */
+
 .booking-card {
   display: flex;
   background: #ffffff;
@@ -720,7 +694,7 @@ margin-left: auto;
   transition: all 0.3s ease;
 }
 
-/* LEFT STATUS STRIP */
+
 .booking-card::before {
   content: "";
   width: 6px;
@@ -739,7 +713,7 @@ margin-left: auto;
   gap: 12px;
 }
 
-/* HEADER */
+
 .booking-header {
   display: flex;
   justify-content: space-between;
@@ -751,7 +725,7 @@ margin-left: auto;
   font-size: 1.3rem;
 }
 
-/* DETAILS WITH ICONS */
+
 .booking-meta {
   display: flex;
   gap: 20px;
@@ -765,21 +739,20 @@ margin-left: auto;
   gap: 6px;
 }
 
-/* DIVIDER */
+
 .booking-divider {
   height: 1px;
   background: #e5e7eb;
   margin: 5px 0;
 }
 
-/* ACTION ROW */
 .booking-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* STATUS BADGE */
+
 .booking-status {
   font-size: 0.75rem;
   font-weight: 700;
@@ -797,7 +770,7 @@ margin-left: auto;
   color: #dc2626;
 }
 
-/* BUTTON */
+
 .booking-actions button {
   background: #fee2e2;
   color: #ef4444;
@@ -819,7 +792,7 @@ margin-left: auto;
   color: #4b5563;
 }
 
-/* Status Badges */
+
 .badge {
   padding: 6px 14px;
   border-radius: 99px;
@@ -840,7 +813,7 @@ margin-left: auto;
   border: 1px solid #f87171;
 }
 
-/* Action Buttons */
+
 .btn-cancel {
   background: #ffffff;
   color: #dc2626;
@@ -864,9 +837,7 @@ margin-left: auto;
   border-radius: 10px;
 }
 
-/* =========================
-   PROFILE DROPDOWN
-========================= */
+
 #profileDropdown {
   display: none;
   position: absolute;
@@ -888,9 +859,7 @@ margin-left: auto;
   border-radius: 8px;
 }
 
-/* =========================
-   NETFLIX CAROUSEL
-========================= */
+
 .netflix-section {
   max-width: 1100px;
   margin: 40px auto;
@@ -940,7 +909,7 @@ margin-left: auto;
   background: #4338ca;
 }
 
-/* NAV BUTTONS */
+
 .nav-btn {
   position: absolute;
   background: rgba(0,0,0,0.6);
@@ -1013,9 +982,8 @@ margin-left: auto;
   background: #1e40af;
 }
 
-/* =========================
-   EVENT FILTER BAR
-========================= */
+
+
 
 .filter-bar {
   display: flex;
@@ -1029,14 +997,14 @@ margin-left: auto;
   width: fit-content;
 }
 
-/* Label (optional if you add one) */
+
 .filter-bar label {
   font-size: 14px;
   font-weight: 500;
   color: #334155;
 }
 
-/* Dropdown styling */
+
 .filter-bar select {
   padding: 10px 14px;
   border-radius: 10px;
@@ -1049,7 +1017,7 @@ margin-left: auto;
   transition: all 0.2s ease;
 }
 
-/* Hover effect */
+
 .filter-bar select:hover {
   border-color: #3b82f6;
 }

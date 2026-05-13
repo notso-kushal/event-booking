@@ -11,7 +11,7 @@
   <div class="auth-wrapper">
     <div class="auth-card">
 
-      <!-- ================= LOGIN ================= -->
+
       <div class="auth-front">
 
         <h2>Welcome Back 👋</h2>
@@ -35,7 +35,7 @@
 
       </div>
 
-      <!-- ================= REGISTER ================= -->
+
       <div class="auth-back" style="display:none;">
 
         <h2>Create Account ✨</h2>
@@ -63,7 +63,7 @@
     </div>
   </div>
 
-  <!-- ================= FIREBASE ================= -->
+ 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -86,7 +86,6 @@
 
 
     
-    /* ================= LOGIN ================= */
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
@@ -103,13 +102,13 @@
 
   const user = userCredential.user;
 
-  // 🔥 ADMIN CHECK (ONLY EMAIL)
+
   if (user.email === "admin@gmail.com") {
     window.location.href = "admin.html";
     return;
   }
 
-  // normal users
+
   window.location.href = "dashboard.html";
 
 })
@@ -155,7 +154,7 @@ function register() {
       msg.innerText = error.message;
     });
 }
-    /* ================= FLIP ================= */
+
     let isLogin = true;
 
     function flipCard() {
@@ -173,7 +172,7 @@ function register() {
       isLogin = !isLogin;
     }
 
-    /* ================= PASSWORD TOGGLE ================= */
+
     function togglePassword(el, id) {
       const input = document.getElementById(id);
 
